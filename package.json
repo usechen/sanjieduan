@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "nodemailer": "^6.3.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/usechen/sanjieduan/issues"
   },
-  "homepage": "https://github.com/usechen/sanjieduan#readme"
+  "homepage": "https://github.com/usechen/sanjieduan#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "nodemailer": "^6.3.0",
+    "request": "^2.88.0"
+  }
 }
