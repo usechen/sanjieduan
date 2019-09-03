@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/usechen/sanjieduan#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
     "nodemailer": "^6.3.0",
     "request": "^2.88.0"
   }
