@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+      <add></add>
+      <dis></dis>
+   </div>
+
+
+   <template id="add">
+      <div>
+         <input type="text" v-model='str'>
+         <button @click='add'>添加</button>
+         {{str}}
+      </div>
+   </template>
+
+
+
+   <template id="dis">
+      <div>
+         <ul>
+            <li v-for='(item,index) of list' :style='item.state?red:blue'>
+               {{item.mgs}}
+               <button @click='del(index)'>删除</button>
+               <span v-if='item.state'>已完成</span>
+               <button v-else @click='gai(index)'>完成</button>
+            </li>
+         </ul>
+      </div>
+   </template>
+   <script>
+      //  创建一个空的实例
+      let ang = new Vue()
+
+
+      //  创建一个局部组件，add
+      let add = Vue.extend({
+         template : '#add',
+         data(){
+            return{
+               str : '这里是新添加的',
+            }
+         },
+         methods : {
+            add(){
+               //  调用空实例上的方法，传参直接在方法名后面加上
+               ang.$emit('hehe',this.str)
+            }
+         }
+      })
+      //  创建一个局部组件，dis
+      let dis = Vue.extend({
+         template : '#dis',
+         data(){
+            return{
+               list : [
+                  {
+                     mgs : '明天敲代码',
+                     state : true
+                  },{
+                     mgs : '后天出去浪',
+                     state : false
+                  }
+               ],
+               red: { background: 'red' },
+               blue: { background: 'blue' }
+            }
+         },
+         methods :{
+            add(str){
+               this.list.push({mgs : str,state : false})
+            },
+            del(index){
+               this.list.splice(index,1)
+            },
+            gai(index){
+               this.list[index].state = true
+            }
+         },
+         //  在空的实例上添加注册一个事件
+         mounted(){
+            ang.$on('hehe',this.add)
+         }
+      })
+      //  创建一个实例
+      new Vue({
+         el : '#app',
+         components : {
+            add : add,
+            dis : dis
+         }
+      })
+   </script>
+</body>
+</html>

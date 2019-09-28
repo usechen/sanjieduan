@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+      <add></add>
+      <add></add>
+   </div>
+   <template id="add">
+      <div>
+         <input type="text" v-model='str'>
+         <button @click='ADD'>添加</button>
+         <ul>
+            <li v-for='(item,index) of list' :style='item.state?red:blue'>
+               {{item.msg}}
+               <button @click='DEL(index)'>删除</button>
+               <span v-if='item.state'>已完成</span>
+               <button v-else @click='finish(index)'>完成</button>
+            </li>
+         </ul>
+      </div>
+   </template>
+   <script>
+      let add = Vue.extend({
+         template:'#add',
+         data(){
+            return{
+               str : '需要添加的内容',
+               list : [
+                  {
+                     msg : '明天备战',
+                     state : true
+                  },{
+                     msg : '后天中秋',
+                     state : false
+                  }
+               ],
+               red : {background : 'red'},
+               blue : {background : 'blue'}
+            }
+         },
+         methods: {
+            ADD() {
+               this.list.push({ msg: this.str, state: false })
+            },
+            DEL(index){
+               this.list.splice(index,1)
+            },
+            finish(index){
+               this.list[index].state = true
+            }
+         }
+      })
+      Vue.component('add',add)
+      new Vue({
+         el : '#app'
+      })
+   </script>
+</body>
+</html>

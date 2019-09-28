@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+      <ul>
+         <!-- <li v-for='item in list'>
+            {{item}}
+         </li> -->
+         <!-- <li v-for='(item,index) of list'>
+            {{item}} + {{index}}
+         </li> -->
+         <!-- <li v-for='(value,key,index) in obj'>
+            {{value}} + {{key}} + {{index}}
+         </li> -->
+         <li v-for='(item,index) of num'>
+            {{item}}+{{index}}
+         </li>
+      </ul>
+   </div>
+   <script>
+      new Vue({
+         el : '#app',
+         data : {
+            list : ['爱情', '科幻', '悬疑', '动作'],
+            obj : {us : 'chen',ps : 123,fn(){},arr : [1,3,5]},
+            num : 100
+         }
+      })
+   </script>
+</body>
+</html>

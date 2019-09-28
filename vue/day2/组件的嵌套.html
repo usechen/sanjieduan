@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+      <son></son>
+   </div>
+
+
+   <template id="son">
+      <div>
+         jsdklfjlskdjflk
+      </div>
+   </template>
+
+   <template id="son2">
+      <div>
+         进口螺丝刀荆防颗粒时代峻峰几十点
+      </div>
+   </template>
+
+   <script>
+      let son = Vue.extend({
+         template : '#son'
+      })
+      let son2 = Vue.extend({
+         template : '#son2' 
+      })
+      let vm = new Vue({
+         el : '#app',
+         components: {
+            son : son
+         }
+      })
+   </script>
+</body>
+</html>

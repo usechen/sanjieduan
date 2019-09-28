@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+      }
+      li{
+         list-style: none;
+         width: 100px;
+         height: 30px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      #app{
+         display: flex;
+      }
+      .styop{
+         opacity: .5;
+      }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <ul v-for='(item,index) of list'  v-bind:class='index === styop?"styop":""'  @mousemove='hov(index)'>
+         <li>{{item.day}}</li>
+         <li v-for='(itemk,index) of item.ke' :style='index % 2 === 0?str[0]:str[1]'>{{itemk}}</li>
+      </ul>
+      <select v-model='str'>
+         <option value="[{ background: 'red'},{ background: 'skyblue'}]">苹果</option>
+         <option>香蕉</option>
+         <option>红黄</option>
+      </select>
+      {{str}}
+   </div>
+   <script>
+      new Vue({
+         el : '#app',
+         data : {
+            list :[
+               {
+                  day: '星期一',
+                  ke: ['数学', '语文', '英语', 'JAVA', 'HTML', 'PHP', '语文', '数学', '数学',]
+               }, {
+                  day: '星期二', 
+                  ke: ['数学', '语文', '英语', 'JAVA', 'HTML', 'PHP', '语文', '数学', '数学',]
+               }, {
+                  day: '星期三',
+                  ke: ['数学', '语文', '英语', 'JAVA', 'HTML', 'PHP', '语文', '数学', '数学',]
+               }, {
+                  day: '星期四',
+                  ke: ['数学', '语文', '英语', 'JAVA', 'HTML', 'PHP', '语文', '数学', '数学',]
+               }, {
+                  day: '星期五',
+                  ke: ['数学', '语文', '英语', 'JAVA', 'HTML', 'PHP', '语文', '数学', '数学',]
+               }
+            ],
+            sty1 : { background: 'red'},
+            sty2 : { background: 'skyblue'},
+            styop : 0,
+            stykai : false,
+            str : [{ background: 'red' }, { background: 'skyblue' }],
+         },
+         methods : {
+            hov(index){
+               this.styop = index
+            }
+         }
+      })
+   </script>
+</body>
+</html>

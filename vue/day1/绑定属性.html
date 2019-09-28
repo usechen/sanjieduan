@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+   <style>
+      div{
+         width: 100px;
+         height: 100px;
+         
+      }
+      .demo1{
+         background-color: #0f0;
+      }
+      .demo2{
+         background-color: #ff0;
+      }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <div :class=bgc>
+      </div>
+      <div :class='sta?"demo1" : "demo2"'>
+      </div>
+      <button @click=dian>点击换颜色</button>
+      <button @click=dian2>点击换颜色2</button>
+   </div>
+   
+   <script>
+      new Vue({
+         el : '#app',
+         data : {
+            bgc : 'demo1',
+            sta : true
+         },
+         methods : {
+            dian(){
+               if(this.bgc === 'demo2'){
+                  this.bgc = 'demo1'
+               }else{
+                  this.bgc = 'demo2'
+               }
+            },
+            dian2(){
+               if(this.sta){
+                  this.sta = !this.sta
+               }else{
+                  this.sta = true
+               }
+            }
+         }
+      })
+   </script>
+</body>
+</html>

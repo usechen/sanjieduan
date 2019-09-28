@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../base/vue.js"></script>
+   <style>
+      ul{
+         /* float: left; */
+         overflow: hidden;
+      }
+      li{
+         width: 100px;
+         height: 20px;
+         float: left;
+      }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <ul v-for='(item1) of heng'>
+         <li v-for='(item2) of item1'>
+            {{item1}} * {{item2}}
+         </li>
+      </ul>
+   </div>
+   <script>
+      new Vue({
+         el : '#app',
+         data : {
+            heng : 9,
+         }
+      })
+   </script>
+</body>
+</html>

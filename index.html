@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = [1,2,3,4,5,6,7,8]
+    arr.sort(() => {
+      return Math.random() - 0.5
+    })
+    console.log(arr)
+    var a = 'as';
+    let b = 'dadsfghasddd'
+    let pan = false
+    let jishu
+    for(let i = 0;i < b.length;i++){
+      if(a === b[i] + b[i+1]){
+        jishu = i
+        pan = true
+        break
+      }else{
+        pan = false
+      }
+    }
+    if(pan){
+      console.log(jishu)
+    }else{
+      console.log(-1)
+    }
+  </script>
+</body>
+</html>

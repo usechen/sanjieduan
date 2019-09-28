@@ -1,0 +1,15 @@
+*{
+   margin: 0;
+   padding: 0;
+}
+ul,li,ol{
+   list-style: none;
+}
+.clear:after{
+   content:' '; 
+   display:block; 
+   clear:both; 
+   height:0; 
+   overflow:hidden; 
+   visibility:hidden; 
+} 

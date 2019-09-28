@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      img{
+         width: 200px;
+         height: 200px;
+      }
+   </style>
+</head>
+<body>
+   <div>
+      <input type="file" id='file'>
+      <img src="" alt="">
+      <button onclick='upload()'>上传</button>
+   </div>
+   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+   <script>
+      let serverPath = 'http://localhost:3000'
+      function upload() {
+         let file = $('#file')[0].files[0]
+         console.log(file)
+         let formdata = new FormData()
+         formdata.append('hehe', file)
+         console.log(formdata.get('hehe'))
+         $.ajax({
+            method: 'POST',
+            url: serverPath + '/admin/file/img',
+            data: formdata,
+            processData: false,//不对数据进行处理
+            contentType: false,//不设置上传文件类型
+            cache: false,// 缓存
+            success(data) {
+               console.log(data)
+               if (data.err === 0) {
+                  // /xxx/xxx/xx.jpg
+                  $('img').attr('src', data.imgPath)
+               } else {
+                  alert(data.msg)
+               }
+            }
+         })
+      }
+      
+   </script>
+</body>
+</html>
